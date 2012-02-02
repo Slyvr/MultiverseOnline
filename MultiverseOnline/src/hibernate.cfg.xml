@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD//EN"
+"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+	
+		<!-- Database Connection Properties -->
+		<property name="hibernate.connection.driver_class">oracle.jdbc.OracleDriver</property>
+		<property name="hibernate.connection.url">jdbc:oracle:thin:@localhost:1521:xe</property>
+		<property name="hibernate.connection.username">system</property>
+		<property name="hibernate.connection.password">Samurai89</property>
+		<property name="hibernate.connection.pool_size">0</property>
+		<property name="dialect">org.hibernate.dialect.OracleDialect</property>
+		
+		<!-- Other -->
+		<property name="show_sql">false</property>
+		<property name="hibernate.hbm2ddl.auto">validate</property>
+
+		<!-- Mapping files -->
+		<mapping class="com.slyvr.pojo.Person"/>
+		<mapping class="com.slyvr.pojo.ConnectionHistory"/>
+	</session-factory>
+</hibernate-configuration>

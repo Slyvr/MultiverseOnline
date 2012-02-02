@@ -1,0 +1,125 @@
+<web-app version="2.5" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+
+	<servlet>
+		<servlet-name>home</servlet-name>
+		<servlet-class>com.slyvr.views.ViewHome</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>home</servlet-name>
+		<url-pattern>/view-home</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>contactus</servlet-name>
+		<servlet-class>com.slyvr.views.ViewContactUs</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>contactus</servlet-name>
+		<url-pattern>/view-contactus</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>news</servlet-name>
+		<servlet-class>com.slyvr.views.ViewNews</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>news</servlet-name>
+		<url-pattern>/view-news</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>register</servlet-name>
+		<servlet-class>com.slyvr.views.ViewRegister</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>register</servlet-name>
+		<url-pattern>/view-register</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>check-login</servlet-name>
+		<servlet-class>com.slyvr.checks.CheckLogin</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>check-login</servlet-name>
+		<url-pattern>/check-login</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>check-logout</servlet-name>
+		<servlet-class>com.slyvr.checks.CheckLogout</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>check-logout</servlet-name>
+		<url-pattern>/check-logout</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>check-register</servlet-name>
+		<servlet-class>com.slyvr.checks.CheckRegister</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>check-register</servlet-name>
+		<url-pattern>/check-register</url-pattern>
+	</servlet-mapping>
+
+	<filter>
+		<filter-name>Reporter</filter-name>
+		<filter-class>com.slyvr.filters.ReportFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>Reporter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+<!--
+	<filter>
+		<filter-name>Logger</filter-name>
+		<filter-class>com.slyvr.filters.LogFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>Logger</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+-->
+	<filter>
+		<filter-name>BannedAccessFilter</filter-name>
+		<filter-class>com.slyvr.filters.BannedAccessFilter</filter-class>
+		<init-param>
+			<param-name>bannedSites</param-name>
+			<param-value>
+			www.competingsite.com
+			<!--127.0.0.1-->
+			</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>BannedAccessFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<listener>
+		<listener-class>com.slyvr.listeners.SessionCounter</listener-class>
+	</listener>
+<!-- SPRING LISTENERS
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<listener>
+		<listener-class>
+			org.springframework.web.context.request.RequestContextListener</listener-class>
+	</listener>
+ -->
+	<error-page>
+		<error-code>404</error-code>
+		<location>/errors/fourohfour.jsp</location>
+	</error-page>
+
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+
+</web-app>
